@@ -42,6 +42,7 @@ INSTALLED_APPS = [
 
     # Installed apps
     'institute.apps.InstituteConfig',
+    'about.apps.AboutConfig',
 
     # Installed via pip
 
