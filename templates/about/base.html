@@ -19,7 +19,7 @@
     <!-- Custom styles for this template -->
     <link href="{% static 'css/landing_page.css' %}" rel="stylesheet">
 </head>
-<body class="d-flex h-100 text-center text-white bg-dark">
+<body class="d-flex h-100 {% block text-center %} {% endblock %}  text-white bg-dark">
 
 <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
     <!-- header section -->
@@ -27,9 +27,9 @@
     <div>
         <h3 class="float-md-start pt-2 ">Institute Management</h3>
         <nav class="nav nav-masthead justify-content-center float-md-end">
-            <a class="nav-link  {% block nav-active %}{% endblock %}" aria-current="page" href="#">Home</a>
-            <a class="nav-link" href="#">Login</a>
-            <a class="nav-link" href="#">Contact</a>
+            <a class="nav-link  {% block nav-active-home %} {% endblock %}" aria-current="page" href="#">Home</a>
+            <a class="nav-link {% block nav-active-login %} {% endblock %}" href="#">Login</a>
+            <a class="nav-link {% block nav-active-contact %} {% endblock %}" href="#">Contact</a>
         </nav>
     </div>
 </header>

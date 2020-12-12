@@ -1,0 +1,16 @@
+{% extends 'about/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block nav-active-contact %} active {% endblock %}
+{% block content %}
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form | crispy }}
+        <div class="text-center">
+            <input class="btn btn-outline-light mt-4 w-50" type="submit" value="Submit">
+        </div>
+    </form>
+
+{% endblock %}
+
