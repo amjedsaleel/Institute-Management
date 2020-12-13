@@ -6,7 +6,6 @@ from .forms import ContactForm
 
 
 def index(request):
-    messages.success(request, 'success')
     return render(request, 'about/index.html')
 
 
