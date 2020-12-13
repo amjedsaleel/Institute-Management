@@ -18,21 +18,27 @@
 
     <!-- Custom styles for this template -->
     <link href="{% static 'css/landing_page.css' %}" rel="stylesheet">
+
+    <!-- Custom styles -->
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+
+
 </head>
 <body class="d-flex h-100 {% block text-center %} {% endblock %}  text-white bg-dark">
 
 <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
     <!-- header section -->
     <header class="mb-auto">
-    <div>
-        <h3 class="float-md-start pt-2 ">Institute Management</h3>
-        <nav class="nav nav-masthead justify-content-center float-md-end">
-            <a class="nav-link  {% block nav-active-home %} {% endblock %}" aria-current="page" href="#">Home</a>
-            <a class="nav-link {% block nav-active-login %} {% endblock %}" href="#">Login</a>
-            <a class="nav-link {% block nav-active-contact %} {% endblock %}" href="#">Contact</a>
-        </nav>
-    </div>
-</header>
+        <div>
+            <a href="{% url 'about:index' %}"><h3 class="float-md-start pt-2 text-white">Institute Management</h3></a>
+            <nav class="nav nav-masthead justify-content-center float-md-end">
+                <a class="nav-link  {% block nav-active-home %} {% endblock %}" aria-current="page"
+                   href="{% url 'about:index' %}">Home</a>
+                <a class="nav-link {% block nav-active-login %} {% endblock %}" href="#">Login</a>
+                <a class="nav-link {% block nav-active-contact %} {% endblock %}" href="{% url 'about:contact' %}">Contact</a>
+            </nav>
+        </div>
+    </header>
 
     {% include 'includes/messages.html' %}
 
