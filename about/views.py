@@ -1,11 +1,12 @@
 from django.shortcuts import render, redirect
-from django.views import View
+from django.contrib import messages
 
 # Create your views here.
 from .forms import ContactForm
 
 
 def index(request):
+    messages.success(request, 'success')
     return render(request, 'about/index.html')
 
 
