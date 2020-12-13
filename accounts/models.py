@@ -1,7 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 from django.utils.translation import gettext_lazy as _
-# from django.contrib.auth.models import User
+from django.utils import timezone
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -67,12 +68,14 @@ class User(AbstractBaseUser, PermissionsMixin):
             'Unselect this instead of deleting accounts.'
         ),
     )
-
     is_staff = models.BooleanField(
         _('staff status'),
         default=False,
         help_text=_('Designates whether the user can log into this admin site.'),
     )
+
+    date_joined = models.DateTimeField(_('date joined'), default=timezone.now)
+    update_don = models.DateTimeField(verbose_name='Last login', auto_now=True)
 
     objects = CustomUserManager()
 
