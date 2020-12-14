@@ -9,11 +9,11 @@ from accounts.models import User
 
 class Institute(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    name = models.CharField(max_length=255, unique=True, help_text='Full name of college')
-    short_name = models.CharField(max_length=15, unique=True, help_text='Short name of college. Spaces are not allowed')
-    website = models.URLField(blank=True)
-    phone_no = models.CharField(max_length=15, blank=True)
-    address = models.TextField(max_length=255, blank=True)
+    name = models.CharField(max_length=255, unique=True, help_text='eg:- Kozhikode Institute')
+    short_name = models.CharField(max_length=15, unique=True, help_text='eg:- KI')
+    website = models.URLField(help_text='eg:- kozhikodeinstitute.com', blank=True,)
+    phone_no = models.CharField(max_length=15, help_text='eg:- 0495 2211545', blank=True)
+    address = models.TextField(max_length=255, help_text='Provide address of the institute', blank=True)
 
     def __str__(self):
         return self.name

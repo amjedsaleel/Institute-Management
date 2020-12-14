@@ -5,63 +5,47 @@ from django.views import View
 
 # Local Django
 from .models import User
-from institute.models import Institute
+from . forms import CustomUserCreationForm
+from institute.forms import InstituteForm
 
 # Create your views here.
 
 
 class InstituteRegistrationView(View):
     def get(self, request):
-        return render(request, 'accounts/register-institute.html', )
+        institute_form = InstituteForm()
+        user_register_form = CustomUserCreationForm()
+
+        context = {
+            'institute_form': institute_form,
+            'user_register_form': user_register_form
+        }
+
+        return render(request, 'accounts/register-institute.html', context)
 
     def post(self, request):
-        username = request.POST['username']
-        email = request.POST['email']
-        password1 = request.POST['password1']
-        password2 = request.POST['password2']
+        user_register_form = CustomUserCreationForm(request.POST)
+        institute_form = InstituteForm(request.POST)
 
-        institute = request.POST['institute']
-        short_name = request.POST['short-name']
+        print(institute_form.is_valid())
 
-        # try/catch
-        try:
-            website = request.POST['website']
-        except:
-            website = None
+        if (user_register_form.is_valid()) and (institute_form.is_valid()):
+            user = user_register_form.save(commit=False)
+            user.role = 'institute'
+            user.save()
 
-        # try/catch
-        try:
-            phone = request.POST['phone']
-        except:
-            phone = None
+            institute = institute_form.save(commit=False)
+            institute.user = user
+            institute.save()
+            messages.success(request, 'Successfully Account created')
+            return redirect('about:index')
 
-        if password1 != password2:
-            messages.warning(request, 'Password not matching')
+        context = {
+            'institute_form': institute_form,
+            'user_register_form': user_register_form
+        }
 
-        if password1 == password2:
-            if User.objects.filter(username=username).exists():
-                messages.error(request, 'Username already taken, please choose another')
-            else:
-                if User.objects.filter(email=email).exists():
-                    messages.error(request, 'Email already taken, please choose another')
-                else:
-                    user = User.objects.create_user(
-                        username=username,
-                        email=email,
-                        password=password1,
-                        role='institute'
-                    )
-                    user.save()
+        return render(request, 'accounts/register-institute.html', context)
 
-                    institute = Institute.objects.create(
-                        user=user,
-                        name=institute,
-                        short_name=short_name,
-                        website=website,
-                        phone_no=phone
-                    )
-                    institute.save()
 
-                    messages.success(request, 'Account is Successfully Created')
-                    return redirect('about:index')
-        return render(request, 'accounts/register-institute.html',)
+
