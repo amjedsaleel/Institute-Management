@@ -1,4 +1,5 @@
 # Django
+from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render
 from django.views import View
 
@@ -7,7 +8,7 @@ from django.views import View
 
 class InstituteRegistrationView(View):
     def get(self, request):
-        pass
+        return render(request, 'accounts/register-institute.html',)
 
     def post(self, request):
-        pass
+        return render(request, 'accounts/register-institute.html', )

@@ -12,8 +12,8 @@ class Institute(models.Model):
     name = models.CharField(max_length=255, unique=True, help_text='Full name of college')
     short_name = models.CharField(max_length=15, unique=True, help_text='Short name of college. Spaces are not allowed')
     website = models.URLField(blank=True)
-    phone_no = models.CharField(max_length=15)
-    address = models.TextField()
+    phone_no = models.CharField(max_length=15, blank=True)
+    address = models.TextField(max_length=255, blank=True)
 
     def __str__(self):
         return self.name
