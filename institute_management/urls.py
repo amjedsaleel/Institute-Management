@@ -21,5 +21,7 @@ urlpatterns = [
     path('', include('about.urls', namespace='about')),
     path('accounts/', include('accounts.urls', namespace='accounts')),
     path('<str:name>/', include('institute.urls', namespace='institute')),
+    path('<str:name>/teacher/', include('teacher.urls', namespace='teacher')),
+    path('<str:name>/student/', include('student.urls', namespace='student')),
 
 ]

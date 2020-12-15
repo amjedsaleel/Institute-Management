@@ -9,7 +9,7 @@ from django.views import View
 class IndexView(LoginRequiredMixin, View):
     def get(self, request, name):
         print(name)
-        return render(request, 'institute/dashboard.html')
+        return render(request, 'teacher/dashboard.html')
 
     def post(self, request):
         pass

@@ -45,6 +45,8 @@ INSTALLED_APPS = [
     'institute.apps.InstituteConfig',
     'about.apps.AboutConfig',
     'accounts.apps.AccountsConfig',
+    'student.apps.StudentConfig',
+    'teacher.apps.TeacherConfig',
 
     # Installed via pip
     'crispy_forms',
@@ -142,3 +144,5 @@ AUTH_USER_MODEL = 'accounts.User'
 MESSAGE_TAGS = {
     messages.ERROR: 'danger'
 }
+
+LOGIN_URL = '/accounts/login'
