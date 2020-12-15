@@ -1,6 +1,7 @@
 # Django
 from django.contrib import messages
 from django.shortcuts import render, redirect
+from django.urls import reverse
 from django.views import View
 from django.contrib import auth
 
@@ -66,13 +67,13 @@ class LoginView(View):
 
             if user is not None:
                 auth.login(request, user)
-                print(user.id)
+
                 if user.role == 'student':
                     pass
                 elif user.role == 'teacher':
                     pass
                 else:
-                    return redirect('institute:index', name=user.institute.name)
+                    return redirect('institute:index', name=user.institute.short_name)
             else:
                 messages.error(request, 'Invalid Credentials')
                 return redirect('accounts:login')

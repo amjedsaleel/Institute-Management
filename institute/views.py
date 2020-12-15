@@ -7,6 +7,7 @@ from django.views import View
 
 class IndexView(View):
     def get(self, request, name):
+        print(name)
         return render(request, 'institute/dashboard.html')
 
     def post(self, request):
