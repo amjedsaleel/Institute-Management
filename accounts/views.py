@@ -79,3 +79,11 @@ class LoginView(View):
                 return redirect('accounts:login')
 
         return render(request, 'accounts/login.html', {'form': form})
+
+
+class LogoutView(View):
+    def post(self, request):
+        auth.logout(request)
+        print('logout')
+        messages.success(request, 'You have been logged out')
+        return redirect('accounts:login')

@@ -12,9 +12,9 @@
         </li>
 
         <li class="nav-item text-nowrap mt-3 mb-2">
-            <form action="#" method="post">
+            <form action="{% url 'accounts:logout' %}" method="post">
                 {% csrf_token %}
-                <input type="submit" class="btn btn-sm btn-light text text-capitalize" value="Logout">
+                <input type="submit"  value="Logout">
             </form>
         </li>
     </ul>

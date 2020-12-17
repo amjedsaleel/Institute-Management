@@ -34,7 +34,7 @@
             <nav class="nav nav-masthead justify-content-center float-md-end">
                 <a class="nav-link  {% block nav-active-home %} {% endblock %}" aria-current="page"
                    href="{% url 'about:index' %}">Home</a>
-                <a class="nav-link {% block nav-active-login %} {% endblock %}" href="#">Login</a>
+                <a class="nav-link {% block nav-active-login %} {% endblock %}" href="{% url 'accounts:login' %}">Login</a>
                 <a class="nav-link {% block nav-active-contact %} {% endblock %}" href="{% url 'about:contact' %}">Contact</a>
             </nav>
         </div>
