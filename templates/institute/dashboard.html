@@ -1,5 +1,89 @@
 {% extends 'base.html' %}
 {% load static %}
+
+{% block slidebar %}
+    {% include 'institute/includes/slidebar.html' %}
+{% endblock %}
+
 {% block content %}
-    <h1>Institute Dashboard</h1>
+    <div class="container-fluid">
+        <div class="row pt-4" id="">
+            <div class="col-12 col-md-5 col-lg-3 mt-4">
+                <div class="card p-3 bg-light">
+                    <div class="card-body">
+                        <h5 class="card-title">123
+                            <span class="float-end text-white">
+                                <a href="" class="nav-link dropdown-toggle" id="navbarDropdown" role="button"
+                                   data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-cog"></i>
+                                </a>
+                                 <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <li><a class="dropdown-item" href="#">Add Student</a></li>
+                                    <li><a class="dropdown-item" href="#">View all Students</a></li>
+                                </ul>
+                            </span>
+                        </h5>
+                        <h6 class="card-subtitle mb-2 text-muted">Total Student</h6>
+                    </div>
+                </div>
+            </div>
+
+             <div class="col-12 col-md-5 col-lg-3 mt-4">
+                <div class="card p-3 bg-light">
+                    <div class="card-body">
+                        <h5 class="card-title">123
+                            <span class="float-end">
+                                <a href="" class="nav-link dropdown-toggle" id="navbarDropdown" role="button"
+                                   data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-cog"></i>
+                                </a>
+                                 <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <li><a class="dropdown-item" href="#">Add Teacher</a></li>
+                                    <li><a class="dropdown-item" href="#">View all Teachers</a></li>
+                                </ul>
+                            </span>
+                        </h5>
+                        <h6 class="card-subtitle mb-2 text-muted">Total Teachers</h6>
+                    </div>
+                </div>
+            </div>
+
+             <div class="col-12 col-md-5 col-lg-3 mt-4">
+                <div class="card p-3 bg-light">
+                    <div class="card-body">
+                        <h5 class="card-title">4
+                            <span class="float-end">
+                                <a href="" class="nav-link dropdown-toggle" id="navbarDropdown" role="button"
+                                   data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-cog"></i>
+                                </a>
+                                 <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <li><a class="dropdown-item" href="#">Add Department</a></li>
+                                    <li><a class="dropdown-item" href="#">View all Department</a></li>
+                                </ul>
+                            </span>
+                        </h5>
+                        <h6 class="card-subtitle mb-2 text-muted">Total Department</h6>
+                    </div>
+                </div>
+            </div>
+
+             <div class="col-12 col-md-5 col-lg-3 mt-4">
+                <div class="card p-3 bg-light">
+                    <div class="card-body">
+                        <h5 class="card-title">12
+                            <span class="float-end">
+                                <a href="" class="nav-link dropdown-toggle" id="navbarDropdown" role="button"
+                                   data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-cog"></i>
+                                </a>
+                                 <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <li><a class="dropdown-item" href="#">Add Course</a></li>
+                                    <li><a class="dropdown-item" href="#">View all Course</a></li>
+                                </ul>
+                            </span>
+                        </h5>
+                        <h6 class="card-subtitle mb-2  text-muted">Total Course</h6>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
 {% endblock %}
