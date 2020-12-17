@@ -5,10 +5,17 @@
             aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
-    <ul class="navbar-nav px-3">
-        <li class="nav-item text-nowrap">
-            <a class="nav-link" href="#">Sign out</a>
+{#    <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">#}
+  <ul class="navbar-nav px-3" id="navbar-user-detail">
+        <li class="nav-item text-nowrap mt-2 mr-4">
+            <span class="nav-link">{{ request.user.username }}</span>
+        </li>
+
+        <li class="nav-item text-nowrap mt-3 mb-2">
+            <form action="#" method="post">
+                {% csrf_token %}
+                <input type="submit" class="btn btn-sm btn-light text text-capitalize" value="Logout">
+            </form>
         </li>
     </ul>
 </header>

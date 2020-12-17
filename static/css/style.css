@@ -6,14 +6,30 @@
     user-select: none;
 }
 
-@media (min-width: 768px) {
-    .bd-placeholder-img-lg {
-        font-size: 3.5rem;
-    }
-}
-
 .asteriskField {
     color: red;
 
 }
 
+#navbar-user-detail {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#navbar-user-detail .nav-item {
+    margin-right: 8px;
+}
+
+@media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+    }
+
+}
+
+@media (max-width: 767px) {
+    #navbar-user-detail {
+        margin-right: 5em;
+    }
+}
