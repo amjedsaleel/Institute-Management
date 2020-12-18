@@ -5,9 +5,10 @@ from django.views import View
 from django.contrib import messages
 
 # LocalDjango
-from . forms import AddDepartmentForm
-from . models import Institute
+from .forms import AddDepartmentForm
+from .models import Institute
 from accounts.models import User
+
 
 # Create your views here.
 
@@ -40,12 +41,16 @@ class AddDepartment(LoginRequiredMixin, View):
         if form.is_valid():
             print('valid')
             department_name = form.cleaned_data['department_name']
-            object = form.save(commit=False)
-            object.institute = institute_name
-            object.save()
-            messages.success(request, f'{department_name} department is successfully added')
+
+            try:
+                object = form.save(commit=False)
+                object.institute = institute_name
+                object.save()
+                messages.success(request, f'{department_name} department is successfully added')
+            except:
+                messages.error(request, f'{department_name} Department with this Institute is  already exists.')
+
             return redirect('institute:add-department', institute_short_name=institute_short_name)
-        print('not valid')
 
         context = {
             'institute_short_name': institute_short_name,
@@ -53,4 +58,3 @@ class AddDepartment(LoginRequiredMixin, View):
         }
 
         return render(request, 'institute/add_department.html', context)
-

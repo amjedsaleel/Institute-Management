@@ -23,5 +23,8 @@ class Department(models.Model):
     institute = models.ForeignKey(Institute, on_delete=models.CASCADE, blank=True)
     department_name = models.CharField(max_length=30, verbose_name='Department Name: ')
 
+    class Meta:
+        unique_together = ('institute', 'department_name',)
+
     def __str__(self):
         return self.department_name
