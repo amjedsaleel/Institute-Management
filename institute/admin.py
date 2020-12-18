@@ -1,7 +1,8 @@
+
 from django.contrib import admin
 
 # Local Django
-from . models import Institute
+from . models import Institute, Department
 
 # Register your models here.
 
@@ -13,3 +14,4 @@ class InstituteAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Institute, InstituteAdmin)
+admin.site.register(Department)

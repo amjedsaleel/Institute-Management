@@ -7,6 +7,9 @@ from .forms import ContactForm
 
 
 def index(request):
+    if request.user.is_authenticated:
+        return redirect('institute:index', institute_short_name=request.user.institute.short_name)
+
     return render(request, 'about/index.html')
 
 

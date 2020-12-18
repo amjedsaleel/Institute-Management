@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block slidebar %}
+    {% include 'institute/includes/slidebar.html' %}
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row mt-4">
+            <div class="col-12 col-md-10">
+                <div class="card">
+                    <div class="card-header"><h5>ADD DEPARTMENT</h5></div>
+                    <div class="card-body">
+                        <div class="card-text">
+                            <form action="" method="post">
+                                {% csrf_token %}
+                                {{ form.department_name | as_crispy_field }}
+                                <input type="submit" class="btn btn-primary mt-4">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

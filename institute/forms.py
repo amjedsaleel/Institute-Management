@@ -2,7 +2,7 @@
 from django import forms
 
 # Local Django
-from .models import Institute
+from .models import Institute, Department
 
 
 class InstituteForm(forms.ModelForm):
@@ -18,3 +18,15 @@ class InstituteForm(forms.ModelForm):
         }
         model = Institute
         fields = ['name', 'short_name', 'website', 'phone_no']
+
+
+class AddDepartmentForm(forms.ModelForm):
+    class Meta:
+        widgets = {
+            'department_name': forms.TextInput(
+                attrs={'placeholder': 'Department Name', 'class': 'mt-2'}),
+        }
+
+        model = Department
+        fields = ['department_name',]
+

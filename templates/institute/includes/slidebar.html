@@ -11,12 +11,12 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="{% url 'institute:index' institute_short_name %}">
                             <i class="fas fa-tachometer-alt"></i> Dashboard
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="{% url 'institute:add-department' institute_short_name %}">
                             <i class="fas fa-building"></i> Add Department
                         </a>
                     </li>

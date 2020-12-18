@@ -73,7 +73,7 @@ class LoginView(View):
                 elif user.role == 'teacher':
                     pass
                 else:
-                    return redirect('institute:index', name=user.institute.short_name)
+                    return redirect('institute:index', institute_short_name=user.institute.short_name)
             else:
                 messages.error(request, 'Invalid Credentials')
                 return redirect('accounts:login')
