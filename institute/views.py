@@ -60,7 +60,7 @@ class AddDepartment(LoginRequiredMixin, View):
 
 class AddCourse(View):
     def get(self, request, institute_short_name):
-        institute = Institute.objects.get(short_name=institute_short_name)
+        institute = request.user.institute
         form = AddCourseForm()
 
         context = {
@@ -74,9 +74,17 @@ class AddCourse(View):
         form = AddCourseForm(request.POST)
 
         if form.is_valid():
-            object = form.save(commit=False)
-            object.institute = institute
-            object.save()
+            course = form.cleaned_data['course']
+
+            try:
+                object = form.save(commit=False)
+                object.institute = institute
+                object.save()
+                messages.success(request, f'{course} course is successfully added')
+                return redirect('institute:add-course', institute_short_name=institute_short_name)
+            except:
+                messages.error(request, f'{course} course with this Institute is  already exists.')
+
             return redirect('institute:add-course', institute_short_name=institute_short_name)
 
         context = {

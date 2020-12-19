@@ -2,6 +2,7 @@
 from django import forms
 
 # Local Django
+from . import models
 from .models import Institute, Department, Course
 
 
@@ -40,3 +41,4 @@ class AddCourseForm(forms.ModelForm):
 
         model = Course
         fields = '__all__'
+

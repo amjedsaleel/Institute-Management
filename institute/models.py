@@ -38,7 +38,7 @@ class Department(models.Model):
 
 
 class Course(models.Model):
-    institute = models.ForeignKey(Institute, on_delete=models.CASCADE)
+    institute = models.ForeignKey(Institute, on_delete=models.CASCADE, blank=True)
     department = models.ForeignKey(Department, on_delete=models.CASCADE)
     course = models.CharField(max_length=30,)
 
