@@ -21,10 +21,36 @@ class Institute(models.Model):
 
 class Department(models.Model):
     institute = models.ForeignKey(Institute, on_delete=models.CASCADE, blank=True)
-    department_name = models.CharField(max_length=30, verbose_name='Department Name: ')
+    department_name = models.CharField(max_length=30,)
 
     class Meta:
         unique_together = ('institute', 'department_name',)
 
+    def save(self, *args, **kwargs):
+        for field_name in ['department_name']:
+            val = getattr(self, field_name, False)
+            if val:
+                setattr(self, field_name, val.capitalize())
+        super(Department, self).save(*args, **kwargs)
+
     def __str__(self):
         return self.department_name
+
+
+class Course(models.Model):
+    institute = models.ForeignKey(Institute, on_delete=models.CASCADE)
+    department = models.ForeignKey(Department, on_delete=models.CASCADE)
+    course = models.CharField(max_length=30,)
+
+    class Meta:
+        unique_together = ('department', 'course')
+
+    def save(self, *args, **kwargs):
+        for field_name in ['course']:
+            val = getattr(self, field_name, False)
+            if val:
+                setattr(self, field_name, val.capitalize())
+        super(Course, self).save(*args, **kwargs)
+
+    def __str__(self):
+        return self.course

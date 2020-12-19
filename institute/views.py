@@ -5,10 +5,8 @@ from django.views import View
 from django.contrib import messages
 
 # LocalDjango
-from .forms import AddDepartmentForm
-from .models import Institute
-from accounts.models import User
-
+from . forms import AddDepartmentForm, AddCourseForm
+from . models import Institute, Department
 
 # Create your views here.
 
@@ -58,3 +56,32 @@ class AddDepartment(LoginRequiredMixin, View):
         }
 
         return render(request, 'institute/add_department.html', context)
+
+
+class AddCourse(View):
+    def get(self, request, institute_short_name):
+        institute = Institute.objects.get(short_name=institute_short_name)
+        form = AddCourseForm()
+
+        context = {
+            'institute_short_name': institute_short_name,
+            'form': form,
+        }
+        return render(request, 'institute/add_course.html', context)
+
+    def post(self, request, institute_short_name):
+        institute = request.user.institute
+        form = AddCourseForm(request.POST)
+
+        if form.is_valid():
+            object = form.save(commit=False)
+            object.institute = institute
+            object.save()
+            return redirect('institute:add-course', institute_short_name=institute_short_name)
+
+        context = {
+            'institute_short_name': institute_short_name,
+            'form': form,
+        }
+
+        return render(request, 'institute/add_course.html', context)

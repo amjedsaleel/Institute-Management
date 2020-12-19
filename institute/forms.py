@@ -2,7 +2,7 @@
 from django import forms
 
 # Local Django
-from .models import Institute, Department
+from .models import Institute, Department, Course
 
 
 class InstituteForm(forms.ModelForm):
@@ -24,8 +24,19 @@ class AddDepartmentForm(forms.ModelForm):
     class Meta:
         widgets = {
             'department_name': forms.TextInput(
-                attrs={'placeholder': 'Department Name', 'class': 'mt-2', 'style': 'text-transform:uppercase'}),
+                attrs={'placeholder': 'Department Name', 'class': 'mt-2'}),
         }
 
         model = Department
         fields = ['department_name']
+
+
+class AddCourseForm(forms.ModelForm):
+    class Meta:
+        widgets = {
+            'course': forms.TextInput(
+                attrs={'placeholder': 'Course Name', 'class': 'mt-2'}),
+        }
+
+        model = Course
+        fields = '__all__'
