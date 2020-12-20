@@ -17,6 +17,7 @@
                                 {% csrf_token %}
                                 {{ form.department | as_crispy_field }}
                                 {{ form.course | as_crispy_field }}
+{#                                {{ form.p | as_crispy_field }}#}
                                 <input type="submit" class="btn btn-primary mt-4">
                             </form>
                         </div>

@@ -33,6 +33,8 @@ class AddDepartmentForm(forms.ModelForm):
 
 
 class AddCourseForm(forms.ModelForm):
+    # p = forms.ModelChoiceField(Department.objects.all())
+
     class Meta:
         widgets = {
             'course': forms.TextInput(
@@ -40,5 +42,11 @@ class AddCourseForm(forms.ModelForm):
         }
 
         model = Course
-        fields = '__all__'
+        fields = ['institute', 'department', 'course']
 
+    def __init__(self, *args, **kwargs):
+        institute = kwargs.pop('institute', None)
+        super(AddCourseForm, self).__init__(*args, **kwargs)
+
+        if institute:
+            self.fields['department'].queryset = Department.objects.filter(institute=institute)

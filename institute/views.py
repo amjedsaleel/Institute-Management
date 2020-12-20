@@ -61,7 +61,7 @@ class AddDepartment(LoginRequiredMixin, View):
 class AddCourse(View):
     def get(self, request, institute_short_name):
         institute = request.user.institute
-        form = AddCourseForm()
+        form = AddCourseForm(institute=institute)
 
         context = {
             'institute_short_name': institute_short_name,
@@ -71,7 +71,7 @@ class AddCourse(View):
 
     def post(self, request, institute_short_name):
         institute = request.user.institute
-        form = AddCourseForm(request.POST)
+        form = AddCourseForm(request.POST, institute=institute)
 
         if form.is_valid():
             course = form.cleaned_data['course']
