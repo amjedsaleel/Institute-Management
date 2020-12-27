@@ -50,6 +50,7 @@ INSTALLED_APPS = [
 
     # Installed via pip
     'crispy_forms',
+    'debug_toolbar',
 ]
 
 MIDDLEWARE = [
@@ -60,6 +61,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'institute_management.urls'
@@ -144,5 +146,9 @@ AUTH_USER_MODEL = 'accounts.User'
 MESSAGE_TAGS = {
     messages.ERROR: 'danger'
 }
+
+INTERNAL_IPS = [
+    '127.0.0.1',
+]
 
 LOGIN_URL = '/accounts/login'
