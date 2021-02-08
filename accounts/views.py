@@ -32,7 +32,8 @@ class InstituteRegistrationView(View):
 
         if (user_register_form.is_valid()) and (institute_form.is_valid()):
             user = user_register_form.save(commit=False)
-            user.role = 'institute'
+            # user.role = 'institute'
+            user.is_institute = True
             user.save()
 
             institute = institute_form.save(commit=False)
@@ -57,8 +58,6 @@ class LoginView(View):
 
     def post(self, request):
         form = LoginForm(request.POST)
-        username = None
-        password = None
 
         if form.is_valid():
             username = form.cleaned_data['username']
@@ -68,12 +67,15 @@ class LoginView(View):
             if user is not None:
                 auth.login(request, user)
 
-                if user.role == 'student':
+                if user.is_student:
                     pass
-                elif user.role == 'teacher':
+
+                if user.is_teacher:
                     pass
-                else:
+
+                if user.is_institute:
                     return redirect('institute:index', institute_short_name=user.institute.short_name)
+
             else:
                 messages.error(request, 'Invalid Credentials')
                 return redirect('accounts:login')

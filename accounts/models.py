@@ -41,24 +41,12 @@ class CustomUserManager(BaseUserManager):
 
 class User(AbstractBaseUser, PermissionsMixin):
 
-    user_role = (
-        ('institute', 'Institute'),
-        ('teacher', 'Teacher'),
-        ('student', 'Student')
-    )
-
     username = models.CharField(
         _('username'),
         max_length=150,
         unique=True,
     )
     email = models.EmailField(_('email address'), unique=False)
-    role = models.CharField(
-        choices=user_role,
-        max_length=15,
-        help_text='Chose user role',
-        blank=True
-    )
 
     is_active = models.BooleanField(
         _('active'),
@@ -72,6 +60,21 @@ class User(AbstractBaseUser, PermissionsMixin):
         _('staff status'),
         default=False,
         help_text=_('Designates whether the user can log into this admin site.'),
+    )
+    is_institute = models.BooleanField(
+        _('Institute'),
+        default=False,
+        blank=True
+    )
+    is_teacher = models.BooleanField(
+        _('Teacher'),
+        default=False,
+        blank=True
+    )
+    is_student = models.BooleanField(
+        _('Student'),
+        default=False,
+        blank=True
     )
 
     date_joined = models.DateTimeField(_('date joined'), default=timezone.now)
