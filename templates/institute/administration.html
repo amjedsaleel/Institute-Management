@@ -8,12 +8,14 @@
 {% block content %}
     <div class="container-fluid">
         <div class="row mt-4">
+
+            <!-- Add Department -->
             <div class="col-12 col-lg-5 mt-4">
                 <div class="card">
                     <div class="card-header"><h5>ADD DEPARTMENT</h5></div>
                     <div class="card-body">
                         <div class="card-text">
-                            <form action="" method="post">
+                            <form action="{% url 'institute:add-department' institute_short_name %}" method="POST">
                                 {% csrf_token %}
                                 {{ department_form.department_name | as_crispy_field }}
                                 <div class="form-group">
@@ -25,12 +27,13 @@
                 </div>
             </div>
 
+            <!-- Add Course -->
             <div class="col-12 col-lg-5 mt-4">
                 <div class="card">
                     <div class="card-header"><h5>ADD COURSE</h5></div>
                     <div class="card-body">
                         <div class="card-text">
-                            <form action="" method="post">
+                            <form action="{% url 'institute:add-course' institute_short_name %}" method="POST">
                                 {% csrf_token %}
                                 {{ course_form.department | as_crispy_field }}
                                 {{ course_form.course | as_crispy_field }}
