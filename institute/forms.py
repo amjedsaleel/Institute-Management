@@ -25,7 +25,7 @@ class AddDepartmentForm(forms.ModelForm):
     class Meta:
         widgets = {
             'department_name': forms.TextInput(
-                attrs={'placeholder': 'Department Name', 'class': 'mt-2'}),
+                attrs={'placeholder': 'Department Name', 'class': 'mt-1'}),
         }
 
         model = Department
@@ -37,8 +37,10 @@ class AddCourseForm(forms.ModelForm):
 
     class Meta:
         widgets = {
+            'department': forms.Select(
+                attrs={'class': 'mt-1 mb-2'}),
             'course': forms.TextInput(
-                attrs={'placeholder': 'Course Name', 'class': 'mt-2'}),
+                attrs={'placeholder': 'Course Name', 'class': 'mt-1'}),
         }
 
         model = Course

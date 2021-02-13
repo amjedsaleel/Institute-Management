@@ -29,6 +29,24 @@ class IndexView(LoginRequiredMixin, View):
         pass
 
 
+class AdministrationView(LoginRequiredMixin, View):
+
+    def get(self, request, institute_short_name):
+
+        institute = request.user.institute
+
+        department_form = AddDepartmentForm()
+        course_form = AddCourseForm(institute=institute)
+
+        context = {
+            'institute_short_name': institute_short_name,
+            'department_form': department_form,
+            'course_form': course_form
+        }
+
+        return render(request, 'institute/administration.html', context)
+
+
 class AddDepartment(LoginRequiredMixin, View):
     """
     This view for adding department in the institute
